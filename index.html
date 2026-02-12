@@ -9,18 +9,15 @@
     <style>
         /* --- تنظیمات رنگی (پالت ماچا و شکوفه) --- */
         :root {
-            /* رنگ‌های اصلی */
-            --primary-green: #9ebc93;  /* سبز سدری (رنگ اصلی شما) */
-            --soft-pink: #FFCFD2;      /* صورتی پاستلی (رنگ دوم شما) */
-            --dark-green-text: #4a5d4e; /* رنگ متن (سبز دودی تیره - خواناتر از مشکی) */
+            --primary-green: #9ebc93;  
+            --soft-pink: #FFCFD2;      
+            --dark-green-text: #4a5d4e; 
             
-            /* پس‌زمینه‌ها */
-            --bg-page: #f4f7f4;        /* پس‌زمینه کل صفحه (سفید با ته مایه سبز خیلی محو) */
-            --bg-chat-box: #ffffff;    /* پس‌زمینه باکس چت (سفید مطلق) */
-            --bg-ai-bubble: #f2f2f2;   /* حباب پیام هوش مصنوعی */
+            --bg-page: #f4f7f4;        
+            --bg-chat-box: #ffffff;    
+            --bg-ai-bubble: #f2f2f2;   
 
-            /* سایر */
-            --shadow-color: rgba(158, 188, 147, 0.25); /* سایه نرم سبز */
+            --shadow-color: rgba(158, 188, 147, 0.25); 
             --border-soft: #e3ebe3;
         }
 
@@ -37,7 +34,6 @@
             transition: background 0.3s ease;
         }
 
-        /* حالت شب (Dark Mode) - نسخه سبز تیره */
         body.dark-mode {
             --bg-page: #1e2b23;
             --bg-chat-box: #26332b;
@@ -59,19 +55,20 @@
             letter-spacing: 1px;
         }
 
-        /* هدر و لوگو */
+        /* هدر و لوگو (اصلاح شده برای زیبایی) */
         .top-bar {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             padding: 15px;
             animation: fadeInDown 0.8s ease;
+            text-align: center;
         }
 
         .logo {
-            width: 95px; height: 95px;
+            width: 90px; height: 90px;
             border-radius: 50%;
-            /* گرادینت ملایم پشت لوگو */
             background: linear-gradient(135deg, #ffffff 0%, var(--soft-pink) 100%);
             padding: 5px;
             box-shadow: 0 8px 25px var(--shadow-color);
@@ -79,6 +76,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 10px; /* فاصله لوگو از متن */
         }
         
         .logo:hover { transform: scale(1.05) rotate(-3deg); }
@@ -90,19 +88,28 @@
             border: 3px solid #fff; 
         }
 
-        .logo-text {
-            margin-top: 10px;
+        /* استایل جدید متن‌های هدر */
+        .brand-title {
             color: var(--primary-green);
-            font-size: 2.1em;
+            font-size: 2.2em;
             font-family: 'Lalezar', cursive;
+            line-height: 1;
+            margin-bottom: 5px;
             text-shadow: 2px 2px 0px rgba(0,0,0,0.02);
+        }
+
+        .brand-subtitle {
+            color: var(--dark-green-text);
+            font-size: 1em;
+            font-weight: 500;
+            opacity: 0.8;
         }
 
         /* منوی انتخاب درس */
         nav {
             background: var(--bg-chat-box);
             padding: 6px;
-            margin: 5px auto 25px;
+            margin: 10px auto 20px;
             border-radius: 50px;
             box-shadow: 0 5px 20px var(--shadow-color);
             display: inline-block;
@@ -122,7 +129,7 @@
 
         nav ul li a {
             display: block;
-            padding: 8px 18px;
+            padding: 8px 16px;
             color: var(--dark-green-text);
             text-decoration: none;
             border-radius: 25px;
@@ -131,7 +138,6 @@
             font-size: 0.9rem;
         }
 
-        /* استایل دکمه‌های درس وقتی فعال می‌شوند */
         nav ul li a.active {
             background: var(--primary-green);
             color: white;
@@ -149,12 +155,12 @@
             width: 92%;
             margin: 0 auto;
             background: var(--bg-chat-box);
-            border-radius: 30px; /* گردی بیشتر برای نرمی */
+            border-radius: 30px;
             box-shadow: 0 15px 40px var(--shadow-color);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            height: 580px;
+            height: 550px;
             border: 1px solid var(--border-soft);
             position: relative;
         }
@@ -162,7 +168,7 @@
         .chat-header {
             background: var(--primary-green);
             color: white;
-            padding: 15px;
+            padding: 12px;
             text-align: center;
             font-family: 'Lalezar', cursive;
             font-size: 1.1em;
@@ -172,55 +178,50 @@
         .chat-messages {
             flex: 1;
             overflow-y: auto;
-            padding: 25px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 15px;
             scroll-behavior: smooth;
         }
 
-        /* حباب‌های پیام */
         .message { animation: slideIn 0.3s ease; max-width: 85%; }
-        .message.user { align-self: flex-start; } /* کاربر سمت راست */
-        .message.ai { align-self: flex-end; }   /* هوش سمت چپ */
+        .message.user { align-self: flex-start; }
+        .message.ai { align-self: flex-end; }
 
         .message-bubble {
-            padding: 14px 20px;
-            border-radius: 20px;
+            padding: 12px 18px;
+            border-radius: 18px;
             line-height: 1.8;
             font-size: 0.95em;
             position: relative;
             box-shadow: 0 2px 5px rgba(0,0,0,0.03);
         }
 
-        /* حباب کاربر (سبز) */
         .message.user .message-bubble {
             background: var(--primary-green);
             color: white;
             border-bottom-right-radius: 4px;
         }
 
-        /* حباب هوش (سفید/طوسی) */
         .message.ai .message-bubble {
             background: var(--bg-ai-bubble);
             color: var(--dark-green-text);
             border-bottom-left-radius: 4px;
         }
         
-        .message.ai strong { color: #d67a85; /* رنگ بولد داخل متن هوش */ }
+        .message.ai strong { color: #d67a85; }
 
-        /* بخش ورودی */
         .chat-input-area {
-            padding: 20px;
+            padding: 15px;
             background: var(--bg-chat-box);
             border-top: 1px solid var(--border-soft);
         }
 
-        /* دکمه‌های سریع (صورتی ملایم) */
         .quick-actions {
             display: flex;
             gap: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             overflow-x: auto;
             justify-content: center;
             padding-bottom: 5px;
@@ -228,13 +229,13 @@
 
         .quick-action-btn {
             white-space: nowrap;
-            padding: 8px 16px;
-            background: rgba(255, 207, 210, 0.3); /* صورتی خیلی کمرنگ */
+            padding: 6px 14px;
+            background: rgba(255, 207, 210, 0.3);
             color: var(--dark-green-text);
             border: 1px solid var(--soft-pink);
             border-radius: 15px;
             cursor: pointer;
-            font-size: 0.85em;
+            font-size: 0.8em;
             font-family: inherit;
             transition: 0.2s;
             font-weight: 500;
@@ -265,7 +266,7 @@
         }
 
         #sendBtn {
-            padding: 0 25px;
+            padding: 0 20px;
             background: var(--primary-green);
             color: white;
             border: none;
@@ -279,14 +280,29 @@
         #sendBtn:disabled { background: #ccc; box-shadow: none; }
         #sendBtn:hover:not(:disabled) { transform: scale(1.05); }
 
-        /* فوتر */
+        /* فوتر اصلاح شده و شیک */
         .footer-info {
             text-align: center;
             padding: 20px;
             margin-top: auto;
             color: var(--dark-green-text);
             font-size: 0.8em;
-            opacity: 0.7;
+            opacity: 0.8;
+            line-height: 1.8;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            background: rgba(255,255,255,0.4);
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-divider {
+            color: var(--soft-pink);
+            font-weight: bold;
         }
 
         /* لودینگ */
@@ -304,16 +320,15 @@
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* دکمه تم */
         .theme-toggle {
             position: fixed; bottom: 20px; left: 20px;
-            width: 45px; height: 45px;
+            width: 40px; height: 40px;
             background: var(--bg-chat-box);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            font-size: 1.2em;
+            font-size: 1.1em;
             z-index: 100;
             color: var(--primary-green);
         }
@@ -321,7 +336,8 @@
         @media (max-width: 768px) {
             .chat-container { height: 500px; width: 95%; }
             .logo { width: 80px; height: 80px; }
-            .logo-text { font-size: 1.8em; }
+            .brand-title { font-size: 2em; }
+            .brand-subtitle { font-size: 0.9em; }
         }
     </style>
 </head>
@@ -329,12 +345,11 @@
     <div class="bismillah-top">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
 
     <div class="top-bar">
-        <div class="logo-section">
-            <div class="logo">
-                <img src="https://i.imgur.com/vVFvXZr.png" alt="Logo Salva">
-            </div>
-            <div class="logo-text">سلوی؛ همیار هوشمند یادگیری</div>
+        <div class="logo">
+            <img src="https://i.imgur.com/vVFvXZr.png" alt="Logo Salva">
         </div>
+        <div class="brand-title">سلوی</div>
+        <div class="brand-subtitle">همیار هوشمند یادگیری</div>
     </div>
 
     <nav>
@@ -349,7 +364,7 @@
 
     <div class="chat-container">
         <div class="chat-header">
-            💬 سلوی؛ همیار هوشمند یادگیری  
+            💬 دستیار هوشمند شما
         </div>
 
         <div class="chat-messages" id="chatMessages">
@@ -376,10 +391,13 @@
     </div>
 
     <footer class="footer-info">
-        <div>
-            <span><strong>دانش‌آموز:</strong> سلوی مدبر </span> |
-            <span><strong>معلم راهنما:</strong> خانم حسینی </span> |
-            <span><strong>مدرسه:</strong> دبیرستان طوبی  </span>
+        <div class="footer-row">
+            <span><strong>دانش‌آموز:</strong> سلوی مدبر</span>
+            <span class="footer-divider">|</span>
+            <span><strong>معلم راهنما:</strong> خانم حسینی</span>
+        </div>
+        <div class="footer-row" style="margin-top: 5px;">
+            <span><strong>مدرسه:</strong> دبیرستان طوبی</span>
         </div>
     </footer>
 
@@ -392,11 +410,12 @@
         const themeBtn = document.querySelector('.theme-toggle');
         const sendBtn = document.getElementById('sendBtn');
         
+        // آدرس اسکریپت گوگل (تغییر یافته توسط کاربر)
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzPsMH-Y2nlBzuwgG-dEMTsIcqj9P0zEe3rtQsR-4ShGgizAXcVOeZU5syx5QXiWc864g/exec"; 
 
         let currentSubject = 'science';
         let hasConversationStarted = false;
-        let conversationHistory = []; // حافظه مکالمه
+        let conversationHistory = []; 
 
         const subjectNames = {
             'science': 'علوم تجربی',
@@ -406,7 +425,7 @@
             'arabic': 'عربی'
         };
 
-        // --- تغییر درس و پاک کردن حافظه ---
+        // --- تغییر درس ---
         document.querySelectorAll('.subject-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -414,7 +433,6 @@
                 link.classList.add('active');
                 currentSubject = link.dataset.subject;
                 
-                // ریست کردن حافظه برای درس جدید
                 conversationHistory = [];
                 hasConversationStarted = false;
                 
@@ -514,6 +532,7 @@
 
             } catch (error) {
                 document.getElementById(loadingId).remove();
+                // حذف پیام ناموفق از حافظه
                 conversationHistory.pop();
                 setTimeout(() => {
                     addMessage(`(آفلاین) \n اینترنت قطع شد.`, 'ai');
